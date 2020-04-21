@@ -1,0 +1,117 @@
+<header>
+  <h1>Les Directives</h1>
+</header>
+
+<ul>
+  <li>Les directives structurelles : Elles ont pour but de modifier le DOM en ajoutant,
+    enlevant ou replaçant un élément du DOM.
+  </li>
+
+  <li>Les directives attributs : Elles ont pour but de modifier l'apparence ou le
+    comportement d'un élément.
+  </li>
+
+  <li>Tous les attributs <b>HTML</b> existent sous la forme d'une directive Angular</li>
+</ul>
+
+<h3>ngIf</h3>
+<article>
+  <button class="btn btn-outline-primary my-3" (click)="isVisible = !isVisible">
+    Toggle Boolean
+  </button>
+
+  <p *ngIf="isVisible">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid deserunt dignissimos doloremque eaque harum
+    magni, numquam odit omnis possimus recusandae repellat sequi tempore velit voluptas. Dolore odit optio ratione.
+  </p>
+
+  <p *ngIf="isVisible; else elseBlock">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid deserunt dignissimos doloremque eaque harum
+    magni, numquam odit omnis possimus recusandae repellat sequi tempore velit voluptas. Dolore odit optio ratione.
+  </p>
+
+  <ng-template #elseBlock>
+    <p>Lorem ipsum dolor sit amet, [...] Dolore odit optio ratione.</p>
+  </ng-template>
+
+  <p *ngIf="message(isVisible) as chaine" class="text-warning">{{ chaine }}</p>
+  <p *ngIf="message(isVisible); let message" class="text-danger">{{ message }}</p>
+</article>
+
+<h3>ngFor</h3>
+<article>
+  <ul>
+    <li *ngFor="let letter of ['a', 'b', 'c']; index as key">{{ letter }} ({{key}})</li>
+  </ul>
+
+  <p>
+    even = indique si la clé est paire<br/>
+    odd = indique si la clé est impaire<br/>
+    first = indique si on se trouve sur la première valeur du tableau <br/>
+    last = indique si on se trouve sur la dernière valeur du tableau <br/>
+  </p>
+
+</article>
+
+<h3>ngSwitch</h3>
+<article>
+  <div class="btn-group btn-group-sm my-3">
+    <button class="btn btn-outline-dark" (click)=" mode = 'vertical' ">Vertical</button>
+    <button class="btn btn-outline-dark" (click)=" mode = 'horizontal' ">Horizontal</button>
+    <button class="btn btn-outline-dark" (click)=" mode = null ">Aucun</button>
+  </div>
+
+  <div [ngSwitch]=" mode ">
+
+    <ul class="list-unstyled" *ngSwitchCase=" 'vertical' ">
+      <li>Element 1</li>
+      <li>Element 2</li>
+      <li>Element 3</li>
+      <li>Element 4</li>
+      <li>Element 5</li>
+    </ul>
+
+    <ul class="list-inline" *ngSwitchCase=" 'horizontal' ">
+      <li class="list-inline-item">Element 1</li>
+      <li class="list-inline-item">Element 2</li>
+      <li class="list-inline-item">Element 3</li>
+      <li class="list-inline-item">Element 4</li>
+      <li class="list-inline-item">Element 5</li>
+    </ul>
+
+    <p *ngSwitchDefault class="text-black-50">Choisissez un mode d'affichage</p>
+
+  </div>
+</article>
+
+<hr/>
+
+<h3>ngClass</h3>
+
+<button class="btn btn-outline-primary" (click)="hasClass = !hasClass">Toggle Class</button>
+
+<!-- string / array / object -->
+<p class="lead" [ngClass]=" { 'text-info': hasClass, 'text-warning': !hasClass } ">Lorem ipsum dolor sit amet, consectetur
+  adipisicing elit. Ad aliquid deserunt dignissimos doloremque eaque harum magni, numquam odit omnis possimus
+  recusandae repellat sequi tempore velit voluptas. Dolore odit optio ratione.</p>
+
+<h3>ngStyle</h3>
+<div class="btn-group btn-group-sm my-3">
+  <button class="btn btn-outline-dark" (click)=" progress = '0%'; bgcolor='red' ">0%</button>
+  <button class="btn btn-outline-dark" (click)=" progress = '25%'; bgcolor='red' ">25%</button>
+  <button class="btn btn-outline-dark" (click)=" progress = '50%'; bgcolor='orange' ">50%</button>
+  <button class="btn btn-outline-dark" (click)=" progress = '75%'; bgcolor='yellowgreen' ">75%</button>
+  <button class="btn btn-outline-dark" (click)=" progress = '100%'; bgcolor='limegreen' ">100%</button>
+</div>
+
+<div class="progress">
+  <div class="progress-bar" [ngStyle]="{ 'width': progress, 'background-color': bgcolor }"></div>
+</div>
+
+<div class="progress mt-3">
+  <div class="progress-bar" role="progressbar" [attr.aria-valuenow]="progress" aria-valuemin="0" aria-valuemax="100" [style.width]="progress"></div>
+</div>
+
+
+
+
