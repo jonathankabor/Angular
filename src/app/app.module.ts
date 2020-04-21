@@ -7,12 +7,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './component/base/app.component';
 import { PresentationComponent } from './component/presentation/presentation.component';
 import { TodoComponent } from './component/todo/todo.component';
+import { RouteComponent } from './component/route/route.component';
+import { NotFoundComponent } from './component/not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PresentationComponent,
-    TodoComponent
+    TodoComponent,
+    RouteComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -20,6 +24,7 @@ import { TodoComponent } from './component/todo/todo.component';
     FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent, PresentationComponent, TodoComponent]
+  // bootstrap: [AppComponent, PresentationComponent, TodoComponent]
+  bootstrap: [RouteComponent]
 })
 export class AppModule { }

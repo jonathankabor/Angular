@@ -12,14 +12,14 @@
 
 
 <section class="row">
-  <aside class="col-6">
+  <aside class="col-3">
 
     <ul class="list-unstyled">
       <li *ngFor="let task of tasks; index as key" (click)="remove(key)">{{ task }}</li>
     </ul>
 
   </aside>
-  <article class="col-6">
+  <article class="col-9">
 
     <div class="input-group">
       <input type="text" class="form-control" placeholder="Ajouter une tache" [(ngModel)]="task" (keyup.enter)="add()"/>
