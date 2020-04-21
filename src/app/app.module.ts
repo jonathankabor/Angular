@@ -6,11 +6,13 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './component/base/app.component';
 import { PresentationComponent } from './component/presentation/presentation.component';
+import { TodoComponent } from './component/todo/todo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PresentationComponent
+    PresentationComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
@@ -18,6 +20,6 @@ import { PresentationComponent } from './component/presentation/presentation.com
     FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent, PresentationComponent]
+  bootstrap: [AppComponent, PresentationComponent, TodoComponent]
 })
 export class AppModule { }
