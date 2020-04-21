@@ -1,0 +1,83 @@
+<header>
+  <h1>Les Filtres <small>(Pipes)</small></h1>
+</header>
+
+<article>
+  <h3>Chaine de caractère</h3>
+
+  <p> Majuscule: {{ 'je suis un texte en minuscule' | uppercase }}</p>
+  <p> Minuscule: {{ 'JE SUIS UN TEXTE EN MAJUSCULE' | lowercase }}</p>
+  <p> Titre: {{ 'je suis un titre de page' | titlecase }}</p>
+</article>
+
+<article>
+  <h3>Numérique</h3>
+
+  <p>PI = {{ 3.141592 | number: '1.1-4' }}</p><!-- arrondi la valeur -->
+  <p> 1/16 = {{ 1 / 16 | number: '2.1-5' }}</p>
+
+  <p>Pourcentage: {{ 1 / 3 | percent: '2.2' }}</p>
+</article>
+
+<article>
+  <h3>Monétaire</h3>
+
+  <p>Prix (code): {{ 1234567.89 | currency: 'CAD': 'code' }}</p>
+  <p>Prix (symbol): {{ 1234567.89 | currency: 'CAD': 'symbol' }}</p>
+  <p>Prix (symbol-narrow): {{ 1234567.89 | currency: 'CAD': 'symbol-narrow' }}</p>
+
+</article>
+
+<article>
+  <h3>Date</h3>
+
+  <p> Date: {{ date | date: 'dd/MM/yyyy' }}</p>
+  <p> Date: {{ date | date: 'dd/MM/yyyy HH:mm:ss ZZZZ': '+0130' }}</p>
+  <p> Date: {{ date | date: 'full' }}</p>
+</article>
+
+<article>
+  <h3>Objet</h3>
+
+  <p>{{ object }}</p>
+  <p>{{ object | json }}</p>
+</article>
+
+<article>
+  <h3>Safe Operator (?)</h3>
+
+  <p>user.firstname: {{ user?.firstname }}</p>
+  <p>user.address.city: {{ user?.address?.city }}</p>
+</article>
+
+<article>
+  <h3>Slice</h3>
+
+  <ul> <!-- [0; 5[ / [5; 10[  -->
+    <li *ngFor="let name of liste | slice: start: end">{{ name }}</li>
+  </ul>
+
+  <div class="btn-group btn-group-sm">
+    <button class="btn btn-outline-primary" (click)="prev()" [disabled]="start == 0"> &lt;&lt; Prev </button>
+    <button class="btn btn-outline-primary" (click)="next()" [disabled]="end >= liste.length"> Next &gt;&gt; </button>
+  </div>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
