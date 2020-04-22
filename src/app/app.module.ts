@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -21,6 +21,13 @@ import { NotFoundComponent } from './component/not-found/not-found.component';
 import { FiltreComponent } from './component/filtre/filtre.component';
 import { DirectiveComponent } from './component/directive/directive.component';
 import { LocaleComponent } from './component/locale/locale.component';
+import { CustomPipeComponent } from './component/custom-pipe/custom-pipe.component';
+import { PipelindromePipe } from './pipe/pipelindrome/pipelindrome.pipe';
+import { PresentPipe } from './pipe/present/present.pipe';
+import { CustomDirectiveComponent } from './component/custom-directive/custom-directive.component';
+import { HighlightDirective } from './directive/highlight/highlight.directive';
+import { FormulaireComponent } from './component/formulaire/formulaire.component';
+import { SignupComponent } from './component/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -31,16 +38,24 @@ import { LocaleComponent } from './component/locale/locale.component';
     NotFoundComponent,
     FiltreComponent,
     DirectiveComponent,
-    LocaleComponent
+    LocaleComponent,
+    CustomPipeComponent,
+    PipelindromePipe,
+    PresentPipe,
+    CustomDirectiveComponent,
+    HighlightDirective,
+    FormulaireComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'fr' },
-    { provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' }
+    { provide: LOCALE_ID, useValue: 'fr' },               // default value = en
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' },  // Depuis Angular9, default value = USD
   ],
   // bootstrap: [AppComponent, PresentationComponent, TodoComponent]
   bootstrap: [RouteComponent]
