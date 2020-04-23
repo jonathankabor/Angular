@@ -4,41 +4,49 @@
 
 <p class="small">Reactive Forms</p>
 
-<form>
+<form [formGroup]="form" (submit)="signup()">
 
   <div class="form-group row">
     <label class="col-2 col-form-label">Email: </label>
     <div class="col-10">
-      <input type="text" class="form-control" placeholder="Email" />
+      <input type="text" class="form-control" placeholder="Email" formControlName="email"/>
+
+      <p class="form-control-plaintext text-danger" *ngIf="controlEmail(); let message"> {{ message }} </p>
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-2 col-form-label">Mot de passe: </label>
     <div class="col-10">
-      <input type="password" class="form-control" placeholder="Mot de passe" />
+      <input type="password" class="form-control" placeholder="Mot de passe" formControlName="password"/>
+
+      <p class="form-control-plaintext text-danger" *ngIf="controlPassword(); let message"> {{ message }} </p>
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-2 col-form-label">Confirmation: </label>
     <div class="col-10">
-      <input type="password" class="form-control" placeholder="Confirmation" />
+      <input type="password" class="form-control" placeholder="Confirmation" formControlName="confirm"/>
+
+      <p class="form-control-plaintext text-danger" *ngIf="controlConfirmation(); let message"> {{ message }} </p>
     </div>
   </div>
 
   <div class="form-group row">
     <div class="col-10 offset-2">
       <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="CGU" />
+        <input type="checkbox" class="form-check-input" id="CGU" formControlName="term"/>
         <label class="form-check-label" for="CGU">Conditions Générales d'Utilisations: </label>
+
+        <p class="form-control-plaintext text-danger" *ngIf="controlTerm(); let message"> {{ message }} </p>
       </div>
     </div>
   </div>
 
   <div class="form-group row">
     <div class="col-10 offset-2">
-      <input type="submit" class="btn btn-outline-primary" value="S'inscrire" />
+      <input type="submit" class="btn btn-outline-primary" value="S'inscrire"/>
     </div>
   </div>
 

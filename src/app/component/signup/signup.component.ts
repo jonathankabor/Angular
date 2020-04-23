@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { CustomValidator } from '../../validator/custom-validator';
 
 @Component({
   selector: 'app-signup',
@@ -15,22 +16,94 @@ export class SignupComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  passwordLength = 3;
+
+  constructor(private fb: FormBuilder) {
+  }
 
   ngOnInit(): void {
     // new FormControl(default value, [Validators], [Asynchronous Validators])
 
-    this.email = new FormControl();
-    this.password = new FormControl();
-    this.confirmation = new FormControl();
-    this.term = new FormControl();
+    this.email = new FormControl(null, [
+      Validators.required,
+      CustomValidator.email()
+    ]);
+    this.password = new FormControl(null, [
+      Validators.required,
+      Validators.minLength(this.passwordLength)
+    ]);
+    this.confirmation = new FormControl(null, [Validators.required]);
+    this.term = new FormControl(false, [Validators.requiredTrue]);
 
     this.form = this.fb.group({
       email: this.email,
       password: this.password,
       confirm: this.confirmation,
       term: this.term
+    }, {
+      validators: CustomValidator.match_password()
     });
+  }
+
+  public signup(): void {
+
+    for (const key in this.form.controls) {
+      if (this.form.contains(key)) {
+        this.form.get(key).markAsDirty();
+        this.form.get(key).markAsTouched();
+      }
+    }
+
+    if (this.form.valid) {
+      console.log(this.form.value); // object anonyme
+      this.form.reset();
+    }
+  }
+
+  public controlEmail(): string {
+    if (this.email.touched) {
+      if (this.email.hasError('required')) {
+        return `L'adresse email est obligatoire`;
+      }
+      if (this.email.hasError('error_email')) {
+        return `L'adresse email n'est pas valide`;
+      }
+    }
+    return null;
+  }
+
+  public controlPassword(): string {
+    if (this.password.touched) {
+      if (this.password.hasError('required')) {
+        return `Le mot de passe est obligatoire`;
+      }
+      if (this.password.hasError('minlength')) {
+        return `Le mot de passe doit contenir au moins ${this.passwordLength} caractères`;
+      }
+    }
+    return null;
+  }
+
+  public controlConfirmation(): string {
+    if (this.confirmation.touched) {
+      if (this.confirmation.hasError('required')) {
+        return `La confirmation est obligatoire`;
+      }
+
+      if (this.form.hasError('match_password')) {
+        return `Le mot de passe et la confirmation ne sont pas identique`;
+      }
+    }
+    return null;
+  }
+
+  public controlTerm(): string {
+    if (this.term.dirty) {
+      if (this.term.hasError('required')) {
+        return `Veuillez valider les conditions générales d'utilisations`;
+      }
+    }
+    return null;
   }
 
 }
