@@ -1,0 +1,65 @@
+<header>
+  <h1>Promises & Observables</h1>
+</header>
+
+<section class="row">
+
+  <article class="col">
+    <h3>Promise</h3>
+
+    <p>
+      Les Promesses sont des structures (Class) qui permet créer des fonctions Javascript asynchrone
+      (ou non bloquant).<br />
+      Quelque soit l'action effectué, la promesse pourra retourner un résultat. Soit on obtiendra
+      un résultat en réussite, soit un résultat en échec mais ces 2 résultats pourront être traité
+      de manière distincte, à l'aide de 2 méthodes qui sont:<br />
+
+      - then( callback ): traite le résultat en réussite<br />
+      - catch( callback ): traite le résultat en échec<br />
+      - finally( callback ): traitement quelque soit résultat
+    </p>
+    <p>
+      Sync: La fonction (ou l'appel) attendra la fin de l'execution pour passer à l'instruction
+      suivante.
+    </p>
+    <p>
+      Async: La fonction (ou l'appel) n'attendra pas la fin de l'execution, et elle passera tout de
+      suite à l'instruction suivante.
+    </p>
+
+    <button class="btn btn-outline-primary mb-3" (click)="btnPromise()" [disabled]="disabled">Synchroniser</button>
+
+    <p *ngIf="message" [ngClass]="class">{{ message }}</p>
+
+    <ul class="list-unstyled">
+      <li *ngFor="let number of numbers"> {{ number }} </li>
+    </ul>
+
+  </article>
+
+  <article class="col">
+    <h3>Observable</h3>
+
+    <p>
+      Consulter la doc <a href="https://rxjs-dev.firebaseapp.com/api" target="_blank"> RxJS </a>
+      (Reactive Extensions for JavaScript)
+    </p>
+    <p>
+      Un Observable peut émettre plusieurs jeux de valeur (next()), tant qu'il ne se trouve pas dans
+      un état terminé (complete()) ou dans un état erreur (error()).
+    </p>
+    <p>
+      Pour récupérer les valeurs envoyées par un Observable, il va falloir s'y abonner (y souscrire).
+    </p>
+
+    <button class="btn btn-outline-primary mb-3" (click)="btnObservable()" [disabled]="obsDisabled">Synchroniser</button>
+
+    <p *ngIf="obsMessage">{{ obsMessage }}</p>
+
+    <ul class="list-unstyled">
+      <li *ngFor="let number of obsNumbers"> {{ number }} </li>
+    </ul>
+
+  </article>
+
+</section>
