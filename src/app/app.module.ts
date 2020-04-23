@@ -28,6 +28,8 @@ import { CustomDirectiveComponent } from './component/custom-directive/custom-di
 import { HighlightDirective } from './directive/highlight/highlight.directive';
 import { FormulaireComponent } from './component/formulaire/formulaire.component';
 import { SignupComponent } from './component/signup/signup.component';
+import { ServiceComponent } from './component/service/service.component';
+import { PromobseComponent } from './component/promobse/promobse.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { SignupComponent } from './component/signup/signup.component';
     CustomDirectiveComponent,
     HighlightDirective,
     FormulaireComponent,
-    SignupComponent
+    SignupComponent,
+    ServiceComponent,
+    PromobseComponent
   ],
   imports: [
     BrowserModule,
