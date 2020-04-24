@@ -1,0 +1,62 @@
+<header>
+  <h1>Les paramètres d'url</h1>
+</header>
+
+<nav>
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/parameters/john">John</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/parameters', 'jane']">Jane</a>
+    </li>
+  </ul>
+</nav>
+
+<p *ngIf="!name; else information">Pour avoir plus d'information sur John ou Jane cliquez sur leur nom.</p>
+
+<ng-template #information>
+
+  <h3>
+    <a class="text-decoration-none" [routerLink]="['/parameters', name]" [queryParams]="{'page': page}" [fragment]="'doe'">
+      {{ name | titlecase }}
+    </a>
+    <span *ngIf="fragment" class="small">{{ fragment | titlecase }}</span>
+  </h3>
+
+  <div class="my-3">
+    <button class="btn btn-outline-secondary btn-sm" (click)="goBack()"> Retour </button>
+  </div>
+
+  <div class="text-justify" [ngSwitch]="page">
+
+    <div *ngSwitchCase=" '1' ">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad commodi, consequatur cum deleniti ipsam iste
+        laudantium minus nobis odio odit perspiciatis praesentium quisquam repudiandae? Amet natus quas saepe ut
+        velit?</p>
+      <p>Dicta enim optio pariatur placeat? Consectetur debitis dolorem dolores doloribus eos error expedita facere
+        facilis hic incidunt ipsum, iure minima mollitia necessitatibus odit optio quae quidem repudiandae sunt voluptas
+        voluptatum.</p>
+    </div>
+
+    <div *ngSwitchCase=" '2' ">
+      <p>Amet debitis explicabo fugit, ipsam ipsum iste porro praesentium! Deserunt eligendi minus optio porro, quasi
+        ullam velit. Commodi dolore ducimus earum nesciunt sed. Architecto dolore magni minus, sed voluptate
+        voluptates.</p>
+      <p>Aliquam et inventore tempora velit. Aliquam aperiam dolores eius eum eveniet excepturi, harum itaque iure iusto
+        labore magni maiores minus natus odit officiis perspiciatis quas quasi quos recusandae saepe sint?</p>
+    </div>
+  </div>
+
+  <nav>
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/parameters', name]" [queryParams]="{'page': '1'}" [fragment]="fragment"> Page 1</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/parameters', name]" [queryParams]="{'page': '2'}" [fragment]="fragment"> Page 2</a>
+      </li>
+    </ul>
+  </nav>
+
+</ng-template>
