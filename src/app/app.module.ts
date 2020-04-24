@@ -34,6 +34,7 @@ import { PromobseComponent } from './component/promobse/promobse.component';
 import { ParametersComponent } from './component/parameters/parameters.component';
 import { HttpComponent } from './component/http/http.component';
 import { AddressComponent } from './component/address/address.component';
+import { AuthenticationComponent } from './component/authentication/authentication.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { AddressComponent } from './component/address/address.component';
     PromobseComponent,
     ParametersComponent,
     HttpComponent,
-    AddressComponent
+    AddressComponent,
+    AuthenticationComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +70,8 @@ import { AddressComponent } from './component/address/address.component';
   providers: [
     { provide: LOCALE_ID, useValue: 'fr' },               // default value = en
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' },  // Depuis Angular9, default value = USD
-  ],
+    { provide: 'SecureRoute', useValue: _ => true }
+],
   // bootstrap: [AppComponent, PresentationComponent, TodoComponent]
   bootstrap: [RouteComponent]
 })

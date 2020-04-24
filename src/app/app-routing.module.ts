@@ -16,25 +16,32 @@ import { ServiceComponent } from './component/service/service.component';
 import { PromobseComponent } from './component/promobse/promobse.component';
 import { ParametersComponent } from './component/parameters/parameters.component';
 import { HttpComponent } from './component/http/http.component';
+import { SecureRouteGuard } from './guard/secure-route.guard';
+import { AuthenticationComponent } from './component/authentication/authentication.component';
 
 const routes: Routes = [
-  { path: 'home', component: AppComponent },
-  { path: 'presentation', component: PresentationComponent },
-  { path: 'todo', component: TodoComponent },
-  { path: 'filtre', component: FiltreComponent },
-  { path: 'directive', component: DirectiveComponent },
-  { path: 'locale', component: LocaleComponent },
-  { path: 'custom/pipe', component: CustomPipeComponent },
-  { path: 'custom/directive', component: CustomDirectiveComponent },
-  { path: 'formulaire', component: FormulaireComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: 'service', component: ServiceComponent },
-  { path: 'promobse', component: PromobseComponent },
-  { path: 'parameters', component: ParametersComponent },
-  { path: 'parameters/:name', component: ParametersComponent },
-  { path: 'http', component: HttpComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' }, // prefix
-  { path: '**', component: NotFoundComponent }
+  {path: 'home', component: AppComponent},
+  {path: 'presentation', component: PresentationComponent},
+  {path: 'todo', component: TodoComponent},
+  {path: 'filtre', component: FiltreComponent},
+  {path: 'directive', component: DirectiveComponent},
+  {path: 'locale', component: LocaleComponent},
+  {path: 'custom/pipe', component: CustomPipeComponent},
+  {path: 'custom/directive', component: CustomDirectiveComponent},
+  {path: 'formulaire', component: FormulaireComponent},
+  {path: 'signup', component: SignupComponent},
+  {path: 'service', component: ServiceComponent},
+  {path: 'promobse', component: PromobseComponent},
+  {path: 'parameters', component: ParametersComponent},
+  {path: 'parameters/:name', component: ParametersComponent},
+  {
+    path: 'http',
+    component: HttpComponent,
+    canActivate: ['SecureRoute', SecureRouteGuard]
+  },
+  {path: 'login', component: AuthenticationComponent},
+  {path: '', redirectTo: '/home', pathMatch: 'full'}, // prefix
+  {path: '**', component: NotFoundComponent}
 ];
 
 @NgModule({
