@@ -14,6 +14,8 @@ import { FormulaireComponent } from './component/formulaire/formulaire.component
 import { SignupComponent } from './component/signup/signup.component';
 import { ServiceComponent } from './component/service/service.component';
 import { PromobseComponent } from './component/promobse/promobse.component';
+import { ParametersComponent } from './component/parameters/parameters.component';
+import { HttpComponent } from './component/http/http.component';
 
 const routes: Routes = [
   { path: 'home', component: AppComponent },
@@ -28,6 +30,9 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'service', component: ServiceComponent },
   { path: 'promobse', component: PromobseComponent },
+  { path: 'parameters', component: ParametersComponent },
+  { path: 'parameters/:name', component: ParametersComponent },
+  { path: 'http', component: HttpComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // prefix
   { path: '**', component: NotFoundComponent }
 ];

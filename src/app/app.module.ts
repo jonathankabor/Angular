@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -30,6 +31,9 @@ import { FormulaireComponent } from './component/formulaire/formulaire.component
 import { SignupComponent } from './component/signup/signup.component';
 import { ServiceComponent } from './component/service/service.component';
 import { PromobseComponent } from './component/promobse/promobse.component';
+import { ParametersComponent } from './component/parameters/parameters.component';
+import { HttpComponent } from './component/http/http.component';
+import { AddressComponent } from './component/address/address.component';
 
 @NgModule({
   declarations: [
@@ -49,13 +53,17 @@ import { PromobseComponent } from './component/promobse/promobse.component';
     FormulaireComponent,
     SignupComponent,
     ServiceComponent,
-    PromobseComponent
+    PromobseComponent,
+    ParametersComponent,
+    HttpComponent,
+    AddressComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr' },               // default value = en
