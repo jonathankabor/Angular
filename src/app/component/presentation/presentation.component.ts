@@ -13,7 +13,7 @@ export class PresentationComponent implements OnInit {
   chaine: string;
   product = { name: 'Pomme', price: 12.90 };
   html = '<b>Hello World</b>';
-  img = 'assets/images/chopper.jpg';
+  img = 'assets/images/download.jpg';
 
   message: string;
   liste = [
